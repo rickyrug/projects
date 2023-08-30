@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Device Speed Measurement</title>
+</head>
+<body>
+  <h1>Device Speed Measurement</h1>
+  <p id="speed">Speed: </p>
+
+  <script>
+    // Check if the Geolocation API is supported by the browser
+    if ("geolocation" in navigator) {
+      // Retrieve the current position
+      navigator.geolocation.watchPosition(handlePositionUpdate);
+    } else {
+      alert("Geolocation not supported.");
+    }
+
+    function handlePositionUpdate(position) {
+      // Check if the position contains speed information
+      if (position.coords.speed !== null) {
+        // Update the HTML element with the speed value
+        document.getElementById('speed').textContent = 'Speed: ' + position.coords.speed.toFixed(2) + ' m/s';
+      } else {
+        document.getElementById('speed').textContent = 'Speed information not available.';
+      }
+    }
+  </script>
+</body>
+</html>
