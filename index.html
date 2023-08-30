@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Motion Detection</title>
+</head>
+<body>
+  <h1>Motion Detection</h1>
+  <p id="status">Waiting for motion...</p>
+
+  <script>
+    // Check if the DeviceMotionEvent is supported by the browser
+    if (window.DeviceMotionEvent) {
+      // Listen for the device motion event
+      window.addEventListener('devicemotion', handleMotionEvent, false);
+    } else {
+      document.getElementById('status').innerHTML = "Device motion not supported.";
+    }
+
+    function handleMotionEvent(event) {
+      // Get the acceleration values
+      var acceleration = event.acceleration;
+      
+      // Calculate the total acceleration vector
+      var totalAcceleration = Math.sqrt(
+        Math.pow(acceleration.x, 2) +
+        Math.pow(acceleration.y, 2) +
+        Math.pow(acceleration.z, 2)
+      );
+
+      // Define a threshold for detecting motion (you can adjust this)
+      var motionThreshold = 1.5; // Adjust as needed
+      
+      // Update the status
+      var statusElement = document.getElementById('status');
+      if (totalAcceleration > motionThreshold) {
+        statusElement.innerHTML = "Device is moving!";
+      } else {
+        statusElement.innerHTML = "Device is stationary.";
+      }
+    }
+  </script>
+</body>
+</html>
