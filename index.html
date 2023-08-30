@@ -6,7 +6,7 @@
 <body>
   <h1>Motion Detection</h1>
   <h2 id="status">Waiting for motion...</h2>
-
+   <h2 id="totalAcceleration">0</h2>
   <script>
     // Check if the DeviceMotionEvent is supported by the browser
     if (window.DeviceMotionEvent) {
@@ -34,8 +34,10 @@
       var statusElement = document.getElementById('status');
       if (totalAcceleration > motionThreshold) {
         statusElement.innerHTML = "Device is moving!";
+        totalAcceleration.innerHTML = totalAcceleration;
       } else {
         statusElement.innerHTML = "Device is stationary.";
+        totalAcceleration.innerHTML = totalAcceleration;
       }
     }
   </script>
