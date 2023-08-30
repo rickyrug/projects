@@ -32,12 +32,13 @@
       
       // Update the status
       var statusElement = document.getElementById('status');
+      var totalAccelerationElement = document.getElementById('totalAcceleration');
       if (totalAcceleration > motionThreshold) {
         statusElement.innerHTML = "Device is moving!";
-        totalAcceleration.innerHTML = totalAcceleration;
+        totalAccelerationElement.innerHTML = totalAcceleration;
       } else {
         statusElement.innerHTML = "Device is stationary.";
-        totalAcceleration.innerHTML = totalAcceleration;
+        totalAccelerationElement.innerHTML = totalAcceleration;
       }
     }
   </script>
